@@ -1,4 +1,5 @@
-# Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving
+# Course Project for COMP 7474  
+## Forked from: [Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving](https://github.com/mileyan/pseudo_lidar)  
 This paper has been accpeted by Conference on Computer Vision and Pattern Recognition ([CVPR](http://cvpr2019.thecvf.com/)) 2019.
 
 [
@@ -21,7 +22,6 @@ by [Yan Wang](https://www.cs.cornell.edu/~yanwang/), [Wei-Lun Chao](http://www-s
 * 29th July 2019: `submission.py` will save the disparity to the numpy file, not png file. And fix the `generate_lidar.py`.
 * I have modifed the official avod a little bit. Now you can directly train and test pseudo-lidar with avod. Please check the code https://github.com/mileyan/avod_pl.
 
-## Contents
 
 - [Introduction](#introduction)
 - [Usage](#usage)
@@ -57,6 +57,8 @@ We also provide codes to train your own stereo depth estimator and prepare the p
 #### 2.2 Download the dataset
 You need to download the KITTI dataset from [here](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d), including left and right color images, Velodyne point clouds, camera calibration matrices, and training labels. You also need to download the image set files from [here](https://github.com/charlesq34/frustum-pointnets/tree/master/kitti/image_sets). Then you need to organize the data in the following way.
 ```angular2html
+downloading command: wget [hyperlink]
+
 KITTI/object/
     
     train.txt
@@ -65,16 +67,16 @@ KITTI/object/
     
     training/
         calib/
-        image_2/ #left image
-        image_3/ #right image
-        label_2/
-        velodyne/ 
+        image_2/ #left image (https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_image_2.zip)  
+        image_3/ #right image (https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_image_3.zip)  
+        label_2/ (https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_label_2.zip)  
+        velodyne/ (https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_velodyne.zip)  
 
     testing/
-        calib/
-        image_2/
-        image_3/
-        velodyne/
+        calib/ (https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_calib.zip)  
+        image_2/ (...)  
+        image_3/ (...)  
+        velodyne/ (...)  
 ```
 The Velodyne point clouds (by LiDAR) are used **ONLY** as the ground truths to train a stereo depth estimator (e.g., PSMNet).
 #### 2.3 Generate ground-truth image disparities
