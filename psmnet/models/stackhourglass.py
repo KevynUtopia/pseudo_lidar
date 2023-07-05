@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-from submodule import *
+from .submodule import *
 import torch
 import torch.nn as nn
 import torch.utils.data
