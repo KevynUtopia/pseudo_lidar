@@ -1,4 +1,7 @@
-# Course Project for COMP 7474  
+# Course Project for COMP 7404 
+### members:  
+
+
 ## Forked from: [Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving](https://github.com/mileyan/pseudo_lidar)  
 This paper has been accpeted by Conference on Computer Vision and Pattern Recognition ([CVPR](http://cvpr2019.thecvf.com/)) 2019.
 
