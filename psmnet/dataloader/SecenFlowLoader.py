@@ -5,10 +5,11 @@ import torch
 import torchvision.transforms as transforms
 import random
 from PIL import Image, ImageOps
-import preprocess 
+from utils import preprocess 
 import listflowfile as lt
 import readpfm as rp
 import numpy as np
+
 
 IMG_EXTENSIONS = [
     '.jpg', '.JPG', '.jpeg', '.JPEG',
