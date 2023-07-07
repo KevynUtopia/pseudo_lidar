@@ -93,14 +93,7 @@ You can train any stereo disparity model as you want. Here we give an example to
 
 ```python2html
 # train psmnet with 4 TITAN X GPUs.
-python ./psmnet/finetune_3d.py --maxdisp 192 \
-     --model stackhourglass \
-     --datapath ./KITTI/object/training/ \
-     --split_file ./KITTI/object/train.txt \
-     --epochs 300 \
-     --lr_scale 50 \
-     --loadmodel ./pretrained_sceneflow.tar \
-     --savemodel ./psmnet/kitti_3d/  --btrain 12
+python ./psmnet/finetune_3d.py --maxdisp 192      --model stackhourglass      --datapath ./KITTI/object/training/      --split_file ./KITTI/object/train.txt      --epochs 300      --lr_scale 50      --savemodel ./psmnet/kitti_3d/  --btrain 12 --loadmodel ./psmnet/pretrained_sceneflow.tar  --loadmodel ./psmnet/kitti_3d/finetune_5.tar
 ```
 
 #### 2.5 Predict the point clouds
