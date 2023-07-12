@@ -3,3 +3,4 @@ scipy == 1.0.0
 numpy == 1.17.0
 Pillow
 preprocess
+sikit-image

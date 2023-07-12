@@ -1,8 +1,20 @@
 # Course Project for COMP 7404 
 ### members:  
+Wang Xinyi  
+Au Yeuk Ling Daniel  
+Lim Meng Jet  
+Zhang Weiwen  
+
+## Notes for COMP7404  
+This is our reproduction PSMNET + AVOD based on corresponding official resource codes. We have resolved numerous bugs, errors, and version conflicts, and the final versions of PSMNET and AVOD that successfully reproduced the papers are presented in this repository. However, if you want to re-run the code on your own devices, there might still exists some issues about data paths, etc. If you would like to check the coding by executing it, please contact me if encountered any problems: wwzhang@connect.hku.hk  
+
+Especially, for avod, please omit either source-version or psmnet-version of repo, and implement [our version ](https://github.com/KevynUtopia/avod) instead.
 
 
 ## Forked from: [Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving](https://github.com/mileyan/pseudo_lidar)  
+
+
+## Original Paper Readme:  
 This paper has been accpeted by Conference on Computer Vision and Pattern Recognition ([CVPR](http://cvpr2019.thecvf.com/)) 2019.
 
 [
@@ -100,15 +112,11 @@ python ./psmnet/finetune_3d.py --maxdisp 192      --model stackhourglass      --
 ##### Predict the disparities.
 ```angular2html
 # training
-python ./psmnet/submission.py \
-    --loadmodel ./psmnet/kitti_3d/finetune_300.tar \
-    --datapath ./KITTI/object/training/ \
-    --save_path ./KITTI/object/training/predict_disparity
+python ./psmnet/submission.py     --loadmodel ./psmnet/kitti_3d/finetune_20.tar     --datapath ./KITTI/object/training/     --save_path ./KITTI/object/training/predict_disparity
+
 # testing
-python ./psmnet/submission.py \
-    --loadmodel ./psmnet/kitti_3d/finetune_300.tar \
-    --datapath ./KITTI/object/testing/ \
-    --save_path ./KITTI/object/testing/predict_disparity
+python ./psmnet/submission.py     --loadmodel ./psmnet/kitti_3d/finetune_20.tar     --datapath ./KITTI/object/testing/     --save_path ./KITTI/object/testing/predict_disparity
+
 ```
 ##### Convert the disparities to point clouds.
 ```angular2html
@@ -131,19 +139,16 @@ If you want to generate point cloud from depth map (like DORN), you can add `--i
 If you want to train an [AVOD]( https://github.com/kujason/avod) model for 3D object detection, you need to generate ground planes from pseudo-lidar point clouds.
 ```angular2html
 #training
-python ./preprocessing/kitti_process_RANSAC.py \
-    --calib ./KITTI/object/training/calib/ \
-    --lidar_dir  ./KITTI/object/training/pseudo-lidar_velodyne/ \
-    --planes_dir /KITTI/object/training/pseudo-lidar_planes/
+python ./preprocessing/kitti_process_RANSAC.py     --calib ./KITTI/object/training/calib/     --lidar_dir  ./KITTI/object/training/pseudo-lidar_velodyne/     --planes_dir ../avod/KITTI/KITTI/object/training/pseudo-lidar_planes/
 #testing
-python ./preprocessing/kitti_process_RANSAC.py \
-    --calib ./KITTI/object/testing/calib/ \
-    --lidar_dir  ./KITTI/object/testing/pseudo-lidar_velodyne/ \
-    --planes_dir /KITTI/object/testing/pseudo-lidar_planes/
+python ./preprocessing/kitti_process_RANSAC.py     --calib ./KITTI/object/testing/calib/     --lidar_dir  ./KITTI/object/testing/pseudo-lidar_velodyne/     --planes_dir ../avod/KITTI/KITTI/object/testing/pseudo-lidar_planes/
+
 ```
 ### 3. Object Detection models
+Please use [our avod](https://github.com/KevynUtopia/avod) instead of author-released version.
+
 #### AVOD model
-Download the code from [https://github.com/kujason/avod](https://github.com/kujason/avod) and install the Python dependencies. 
+Download the code from [https://github.com/KevynUtopia/avod](https://github.com/KevynUtopia/avod) and install the Python dependencies. 
 
 Follow their README to prepare the data and then replace (1) files in `velodyne` with those in `pseudo-lidar_velodyne` and (2) files in `planes` with those in `pseudo-lidar_planes`. Note that you should still keep the folder names as `velodyne` and `planes`.
 
